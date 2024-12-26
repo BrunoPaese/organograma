@@ -2,8 +2,9 @@ import "./Formulario.css";
 import CampoTexto from "../CampoTexto";
 import ListaSuspensa from "../ListaSuspensa";
 import Botao from "../Botao";
+import { useState } from "react";
 
-const Formulario = () => {
+const Formulario = (props) => {
   const times = [
     "Programação",
     "Front-End",
@@ -13,9 +14,14 @@ const Formulario = () => {
     "Inovação e Gestão",
   ];
 
+  const [nome, setNome] = useState("");
+  const [cargo, setCargo] = useState("");
+  const [imagem, setImagem] = useState("");
+  const [time, setTime] = useState("");
+
   const aoSalvar = (evento) => {
     evento.preventDefault();
-    console.log("Form foi submetido");
+    props.aoColaboradorCadastrado({ nome, cargo, imagem, time });
   };
 
   return (
@@ -26,17 +32,29 @@ const Formulario = () => {
           obrigatorio
           label="Nome"
           placeholder="Digite seu nome"
+          valor={nome}
+          aoAlterado={(value) => setNome(value)}
         ></CampoTexto>
         <CampoTexto
           obrigatorio
           label="Cargo"
           placeholder="Digite seu cargo"
+          valor={cargo}
+          aoAlterado={(value) => setCargo(value)}
         ></CampoTexto>
         <CampoTexto
           label="Imagem"
           placeholder="Digite o endereço da imagem"
+          valor={imagem}
+          aoAlterado={(value) => setImagem(value)}
         ></CampoTexto>
-        <ListaSuspensa obrigatorio label="Time" itens={times}></ListaSuspensa>
+        <ListaSuspensa
+          obrigatorio
+          label="Time"
+          itens={times}
+          valor={time}
+          aoAlterado={(value) => setTime(value)}
+        ></ListaSuspensa>
         <Botao>Criar Card</Botao>
       </form>
     </section>
