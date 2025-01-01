@@ -1,17 +1,17 @@
 import "./CampoTexto.css";
 
-const CampoTexto = (props) => {
+const CampoTexto = (label, valor, obrigatorio, placeholder, aoAlterado) => {
   const aoDigitado = (evento) => {
-    props.aoAlterado(evento.target.value);
+    aoAlterado(evento.target.value);
   };
 
   return (
     <div className="campo-texto">
-      <label>{props.label}</label>
+      <label>{label}</label>
       <input
-        value={props.valor}
-        required={props.obrigatorio}
-        placeholder={props.placeholder}
+        value={valor}
+        required={obrigatorio}
+        placeholder={placeholder}
         onChange={aoDigitado}
       ></input>
     </div>
