@@ -1,6 +1,6 @@
 import "./CampoTexto.css";
 
-const CampoTexto = (label, valor, obrigatorio, placeholder, aoAlterado) => {
+const CampoTexto = ({ label, valor, obrigatorio, placeholder, aoAlterado }) => {
   const aoDigitado = (evento) => {
     aoAlterado(evento.target.value);
   };

@@ -1,6 +1,6 @@
 import "./ListaSuspensa.css";
 
-const ListaSuspensa = (label, obrigatorio, valor, itens, aoAlterado) => {
+const ListaSuspensa = ({ label, obrigatorio, valor, itens, aoAlterado }) => {
   return (
     <div className="lista-suspensa">
       <label>{label}</label>
@@ -9,6 +9,7 @@ const ListaSuspensa = (label, obrigatorio, valor, itens, aoAlterado) => {
         required={obrigatorio}
         value={valor}
       >
+        <option value="" />
         {itens.map((item) => {
           return <option key={item}>{item}</option>;
         })}
